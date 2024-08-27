@@ -77,7 +77,9 @@ const Home = async () => {
               {
                 awards.map((award, i) => (
                   <div key={i} className="flex flex-row gap-8">
-                    <p className="dark:text-white text-black font-thin">{award.when.split("-").slice(0, 2).join(".")}</p>
+                    <div className="w-12">
+                      <p className="dark:text-white text-black font-thin">{award.when.split("-").slice(0, 2).join(".")}</p>
+                    </div>
                     <div className="flex flex-row gap-4">
                       <Image src={award.icon} alt={award.name} className="object-cover w-12 h-12 rounded-xl bg-black/10 dark:bg-white/20 shadow dark:shadow-white/40" width={200} height={200} />
                       <div className="flex flex-col gap-0 max-md:gap-1">
