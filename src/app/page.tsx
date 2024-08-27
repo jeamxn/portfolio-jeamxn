@@ -55,14 +55,17 @@ const Home = async () => {
             <div className="flex flex-row gap-4 flex-wrap">
               {
                 projects.map((project, i) => (
-                  <div key={i} className="w-[calc(33.33%-2rem)] max-2xl:w-[calc(50%-1rem)] max-lg:w-[calc(33.33%-2rem)] max-md:w-[calc(50%-1rem)] max-sm:w-full rounded-xl overflow-hidden shadow dark:shadow-white/40 flex flex-col">
+                  <div key={i} className="w-[calc(33.33%-2rem)] group max-2xl:w-[calc(50%-1rem)] max-lg:w-[calc(33.33%-2rem)] max-md:w-[calc(50%-1rem)] max-sm:w-full rounded-xl overflow-hidden shadow dark:shadow-white/40 flex flex-col">
                     <a href={project.url} target="_blank" rel="noreferrer">
                       <Image src={project.cover} alt={project.data.title} className="object-cover aspect-video bg-black/10 dark:bg-white/20" width={160 * 5} height={90 * 5} />
                       <div className="flex flex-row items-center justify-start p-4 gap-3">
                         <Image src={project.icon} alt={project.data.title} className="object-cover w-12 h-12 rounded-xl bg-black/10 dark:bg-white/20 shadow dark:shadow-white/40" width={200} height={200} />
                         <div className="flex flex-col gap-0">
-                          <p className="dark:text-white text-black font-medium text-xl">{project.data.title}</p>
-                          <p className="dark:text-white text-black/70 font-light">{project.data.description}</p>
+                          <p className="dark:text-white text-black font-medium text-xl group-hover:underline">{project.data.title}</p>
+                          <div className="">
+                            <p className="group-hover:hidden block dark:text-white/70 text-black/70 font-light">{project.data.description}</p>
+                            <p className="hidden group-hover:block dark:text-white/70 text-black/70 font-light">{project.data.startDate.replaceAll("-", ".")} ~ {project.data.endDate.replaceAll("-", ".")}</p>
+                          </div>
                         </div>
                       </div>
                     </a>
