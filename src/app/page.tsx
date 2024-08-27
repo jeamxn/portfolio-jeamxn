@@ -1,113 +1,146 @@
 import Image from "next/image";
+import React from "react";
 
-export default function Home() {
+import { getAwards } from "./getAwards";
+import { getProfile } from "./getProfile";
+import { getProjects } from "./getProjects";
+import { getTeams } from "./getTeams";
+import Express from "./svgs/express";
+import Fastify from "./svgs/fastify";
+import NextJS from "./svgs/nextjs";
+import ReactRN from "./svgs/reactrn";
+
+const Home = async () => {
+  const [projects, awards, teams, profile] = await Promise.all([
+    getProjects(), 
+    getAwards(),
+    getTeams(),
+    getProfile(),
+  ]);
+  console.log(profile);
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <main className="w-full h-full max-lg:block flex flex-row items-start justify-start gap-12 max-lg:p-10 max-lg:px-4">
+      <div className="h-full flex flex-col max-lg:h-auto max-lg:p-0 items-start justify-between gap-12 py-10 pl-10">
+        <Image src={profile} alt="me" className="w-60 h-80 object-cover rounded-full max-lg:w-36 max-lg:h-36 bg-black/10 dark:bg-white/20" width={270} height={360} />
+        <div className="flex flex-col gap-20 max-lg:gap-5">
+          <div className="flex flex-col items-start justify-start gap-2">
+            <div className="flex flex-row items-end justify-start gap-2">
+              <p className="dark:text-white text-black text-4xl font-semibold">최재민</p>
+              <p className="dark:text-white text-black text-2xl font-normal">Developer</p>
+            </div>
+            <p className="dark:text-white text-black text-2xl font-light">JEAMIN CHOI</p>
+          </div>
+          <div className="flex flex-col gap-1">
+            <p className="dark:text-white text-black font-extralight">2006. 09. 27.</p>
+            <a className="w-fit" href="tel:01095062709" target="_blank" rel="noreferrer">
+              <p className="dark:text-white text-black font-extralight hover:underline">+82 10 9506 2709.</p>
+            </a>
+            <a className="w-fit" href="mailto:admin@chicken-moo.com" target="_blank" rel="noreferrer">
+              <p className="dark:text-white text-black font-extralight hover:underline">admin@chicken-moo.com</p>
+            </a>
+            <a className="w-fit" href="https://www.instagram.com/jeamxn" target="_blank" rel="noreferrer">
+              <p className="dark:text-white text-black font-extralight hover:underline">instagram @jeamxn</p>
+            </a>
+          </div>
         </div>
       </div>
-
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+      <div className="w-full h-full overflow-y-auto max-lg:flex max-lg:h-auto max-lg:mt-10 max-lg:pb-10">
+        <div className="flex flex-col gap-12 m-10 max-lg:m-0 max-lg:h-auto">
+          <div className="flex flex-col gap-1">
+            <p className="dark:text-white text-black font-extralight text-2xl">안녕하세요! <b className="font-bold">할 수 없는 것</b>을 <b className="font-bold">시도</b>하는 개발자, 최재민입니다!</p>
+            <p className="dark:text-white text-black font-extralight text-2xl">모두가 할 수 없다고 말하는 것을 <b className="font-bold">시도할 때 즐거움</b>을 느낍니다.</p>
+          </div>
+          <div className="flex flex-col gap-6">
+            <p className="dark:text-white text-black font-medium text-2xl">Projects</p>
+            <div className="flex flex-row gap-4 flex-wrap">
+              {
+                projects.map((project, i) => (
+                  <div key={i} className="w-[calc(33.33%-2rem)] max-2xl:w-[calc(50%-1rem)] max-lg:w-[calc(33.33%-2rem)] max-md:w-[calc(50%-1rem)] max-sm:w-full rounded-xl overflow-hidden shadow dark:shadow-white/40 flex flex-col">
+                    <a href={project.url} target="_blank" rel="noreferrer">
+                      <Image src={project.cover} alt={project.data.title} className="object-cover aspect-video bg-black/10 dark:bg-white/20" width={160 * 5} height={90 * 5} />
+                      <div className="flex flex-row items-center justify-start p-4 gap-3">
+                        <Image src={project.icon} alt={project.data.title} className="object-cover w-12 h-12 rounded-xl bg-black/10 dark:bg-white/20 shadow dark:shadow-white/40" width={200} height={200} />
+                        <div className="flex flex-col gap-0">
+                          <p className="dark:text-white text-black font-medium text-xl">{project.data.title}</p>
+                          <p className="dark:text-white text-black/70 font-light">{project.data.description}</p>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+          <div className="flex flex-row gap-20 max-xl:flex-col max-xl:gap-12">
+            <div className="flex flex-col gap-6 w-3/5">
+              <p className="dark:text-white text-black font-medium text-2xl">Awards</p>
+              {
+                awards.map((award, i) => (
+                  <div key={i} className="flex flex-row gap-8">
+                    <p className="dark:text-white text-black font-thin">{award.when.split("-").slice(0, 2).join(".")}</p>
+                    <div className="flex flex-row gap-4">
+                      <Image src={award.icon} alt={award.name} className="object-cover w-12 h-12 rounded-xl bg-black/10 dark:bg-white/20 shadow dark:shadow-white/40" width={200} height={200} />
+                      <div className="flex flex-col gap-0 max-md:gap-1">
+                        <div className="flex flex-row gap-1">
+                          <a href={award.url} target="_blank" rel="noreferrer">
+                            <p className="dark:text-white text-black text-lg hover:underline">{award.name} {award.period}</p>
+                          </a>
+                        </div>
+                        <div className="flex flex-row max-md:flex-col max-md:gap-0 gap-1 opacity-70">
+                          <div className="flex flex-row gap-1">
+                            <p className="dark:text-white text-black font-thin">주최</p>
+                            <p className="dark:text-white text-black whitespace-nowrap">{award.host}</p>
+                          </div>
+                          <p className="dark:text-white text-black max-md:hidden">·</p>
+                          <div className="flex flex-row gap-1">
+                            <p className="dark:text-white text-black font-thin">주관</p>
+                            <p className="dark:text-white text-black whitespace-nowrap">{award.organizer}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))
+              }
+            </div>
+            <div className="flex flex-col gap-6 w-2/5">
+              <p className="dark:text-white text-black font-medium text-2xl">Teams</p>
+              <div className="flex flex-col gap-4 flex-warp">
+                {
+                  teams.map((team, i) => (
+                    <div className="flex flex-row gap-4 items-center" key={i}>
+                      <div className="shadow dark:shadow-white/40 bg-white w-10 h-10 rounded-xl overflow-hidden">
+                        <Image src={team.icon} alt={team.name} className="object-cover w-full h-full bg-black/10 dark:bg-white/20" width={200} height={200} />
+                      </div>
+                      <div className="flex flex-col gap-0 max-md:gap-1">
+                        <div className="flex flex-row gap-1">
+                          <a href={team.url} target="_blank" rel="noreferrer">
+                            <p className="dark:text-white text-black text-lg hover:underline">{team.name}</p>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  ))
+                }
+              </div>
+            </div>
+          </div>
+          <div className="flex flex-col gap-6">
+            <p className="dark:text-white text-black font-medium text-2xl">Skills</p>
+            <div className="flex flex-col gap-4">
+              <ReactRN />
+              <div className="flex flex-row items-center justify-start gap-4">
+                <Fastify />
+                <div className="h-8 dark:border-white/30 border-black/15 border" />
+                <Express />
+              </div>
+              <NextJS />
+            </div>
+          </div>
+        </div>
       </div>
     </main>
   );
-}
+};
+
+export default Home;
