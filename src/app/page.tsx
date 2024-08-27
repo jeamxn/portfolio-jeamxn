@@ -72,7 +72,7 @@ const Home = async () => {
             </div>
           </div>
           <div className="flex flex-row gap-20 max-xl:flex-col max-xl:gap-12">
-            <div className="flex flex-col gap-6 w-3/5">
+            <div className="flex flex-col gap-6 w-3/5 max-xl:w-full">
               <p className="dark:text-white text-black font-medium text-2xl">Awards</p>
               {
                 awards.map((award, i) => (
@@ -103,7 +103,7 @@ const Home = async () => {
                 ))
               }
             </div>
-            <div className="flex flex-col gap-6 w-2/5">
+            <div className="flex flex-col gap-6 w-2/5 max-xl:w-full">
               <p className="dark:text-white text-black font-medium text-2xl">Teams</p>
               <div className="flex flex-col gap-4 flex-warp">
                 {
@@ -112,13 +112,9 @@ const Home = async () => {
                       <div className="shadow dark:shadow-white/40 bg-white w-10 h-10 rounded-xl overflow-hidden">
                         <Image src={team.icon} alt={team.name} className="object-cover w-10 h-10 bg-black/10 dark:bg-white/20" width={200} height={200} />
                       </div>
-                      <div className="flex flex-col gap-0 max-md:gap-1">
-                        <div className="flex flex-row gap-1">
-                          <a href={team.url} target="_blank" rel="noreferrer">
-                            <p className="dark:text-white text-black text-lg hover:underline">{team.name}</p>
-                          </a>
-                        </div>
-                      </div>
+                      <a href={team.url} target="_blank" rel="noreferrer">
+                        <p className="dark:text-white text-black text-lg hover:underline">{team.name}</p>
+                      </a>
                     </div>
                   ))
                 }
