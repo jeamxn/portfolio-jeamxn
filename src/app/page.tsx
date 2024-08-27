@@ -17,7 +17,7 @@ const Home = async () => {
     getTeams(),
     getProfile(),
   ]);
-  console.log(profile);
+  // console.log(profile);
   return (
     <main className="w-full h-full max-lg:block flex flex-row items-start justify-start gap-12 max-lg:p-10 max-lg:px-4">
       <div className="h-full flex flex-col max-lg:h-auto max-lg:p-0 items-start justify-between gap-12 py-10 pl-10">
@@ -110,7 +110,7 @@ const Home = async () => {
                   teams.map((team, i) => (
                     <div className="flex flex-row gap-4 items-center" key={i}>
                       <div className="shadow dark:shadow-white/40 bg-white w-10 h-10 rounded-xl overflow-hidden">
-                        <Image src={team.icon} alt={team.name} className="object-cover w-full h-full bg-black/10 dark:bg-white/20" width={200} height={200} />
+                        <Image src={team.icon} alt={team.name} className="object-cover w-10 h-10 bg-black/10 dark:bg-white/20" width={200} height={200} />
                       </div>
                       <div className="flex flex-col gap-0 max-md:gap-1">
                         <div className="flex flex-row gap-1">
