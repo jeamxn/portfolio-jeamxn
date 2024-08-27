@@ -91,12 +91,12 @@ const Home = async () => {
                         <div className="flex flex-row max-md:flex-col max-md:gap-0 gap-1 opacity-70">
                           <div className="flex flex-row gap-1">
                             <p className="dark:text-white text-black font-thin">주최</p>
-                            <p className="dark:text-white text-black whitespace-nowrap">{award.host}</p>
+                            <p className="dark:text-white text-black">{award.host}</p>
                           </div>
                           <p className="dark:text-white text-black max-md:hidden">·</p>
                           <div className="flex flex-row gap-1">
                             <p className="dark:text-white text-black font-thin">주관</p>
-                            <p className="dark:text-white text-black whitespace-nowrap">{award.organizer}</p>
+                            <p className="dark:text-white text-black">{award.organizer}</p>
                           </div>
                         </div>
                       </div>
