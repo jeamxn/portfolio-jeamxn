@@ -5,6 +5,21 @@ import React from "react";
 export const metadata: Metadata = {
   title: "포트폴리오 · 최재민",
   description: "Jeamin Choi's portfolio website",
+  openGraph: {
+    title: "포트폴리오 · 최재민",
+    description: "Jeamin Choi's portfolio website",
+    type: "website",
+    locale: "ko_KR",
+    url: "https://portfolio.jeamxn.dev/",
+    images: [
+      {
+        url: "https://portfolio.jeamxn.dev/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Jeamin Choi",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
