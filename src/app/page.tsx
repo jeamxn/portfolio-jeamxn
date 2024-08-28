@@ -79,7 +79,7 @@ const Home = async () => {
               <p className="dark:text-white text-black font-medium text-2xl">Awards</p>
               {
                 awards.map((award, i) => (
-                  <div key={i} className="flex flex-row gap-8">
+                  <div key={i} className="flex flex-row gap-8 max-md:flex-col max-md:gap-4">
                     <div className="w-12">
                       <p className="dark:text-white text-black font-thin">{award.when.split("-").slice(0, 2).join(".")}</p>
                     </div>
