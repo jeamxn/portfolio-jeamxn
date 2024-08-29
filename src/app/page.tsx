@@ -21,7 +21,7 @@ const Home = async () => {
   return (
     <main className="w-full h-full max-lg:block flex flex-row items-start justify-start gap-12 max-lg:p-10 max-lg:px-4">
       <div className="h-full flex flex-col max-lg:h-auto max-lg:p-0 items-start justify-between gap-12 py-10 pl-10">
-        <Image src={profile} alt="me" className="w-60 h-80 object-cover rounded-full max-lg:w-36 max-lg:h-36 bg-black/10 dark:bg-white/20" width={270} height={360} />
+        <Image src={profile} alt="me" className="w-60 h-80 object-cover rounded-full max-lg:w-36 max-lg:h-36 loader bg-gradient-to-br from-black/10 via-white to-black/10 dark:from-white/30 dark:via-black dark:to-white/30" width={270} height={360} />
         <div className="flex flex-col gap-20 max-lg:gap-5">
           <div className="flex flex-col items-start justify-start gap-2">
             <div className="flex flex-row items-end justify-start gap-2">
@@ -55,11 +55,11 @@ const Home = async () => {
             <div className="flex flex-row gap-4 flex-wrap">
               {
                 projects.map((project, i) => (
-                  <div key={i} className="w-[calc(33.33%-2rem)] group max-2xl:w-[calc(50%-1rem)] max-lg:w-[calc(33.33%-2rem)] max-md:w-[calc(50%-1rem)] max-sm:w-full rounded-xl overflow-hidden shadow dark:shadow-white/40 flex flex-col">
+                  <div key={i} className="w-[calc(33.33%-2rem)] group max-2xl:w-[calc(50%-1rem)] max-lg:w-[calc(33.33%-2rem)] max-md:w-[calc(50%-1rem)] max-sm:w-full rounded-xl overflow-hidden shadow dark:shadow-white/35 flex flex-col">
                     <a href={project.url} target="_blank" rel="noreferrer">
-                      <Image src={project.cover} alt={project.data.title} className="object-cover aspect-video bg-black/10 dark:bg-white/20" width={160 * 5} height={90 * 5} />
+                      <Image src={project.cover} alt={project.data.title} className="object-cover aspect-video loader bg-gradient-to-br from-black/10 via-white to-black/10 dark:from-white/30 dark:via-black dark:to-white/30" width={160 * 5} height={90 * 5} />
                       <div className="flex flex-row items-center justify-start p-4 gap-3">
-                        <Image src={project.icon} alt={project.data.title} className="object-cover w-12 h-12 rounded-xl bg-black/10 dark:bg-white/20 shadow dark:shadow-white/40" width={200} height={200} />
+                        <Image src={project.icon} alt={project.data.title} className="object-cover w-12 h-12 rounded-xl loader bg-gradient-to-br from-black/10 via-white to-black/10 dark:from-white/30 dark:via-black dark:to-white/30 shadow dark:shadow-white/35" width={200} height={200} />
                         <div className="flex flex-col gap-0">
                           <p className="dark:text-white text-black font-medium text-xl group-hover:underline">{project.data.title}</p>
                           <div className="">
@@ -84,7 +84,7 @@ const Home = async () => {
                       <p className="dark:text-white text-black font-thin">{award.when.split("-").slice(0, 2).join(".")}</p>
                     </div>
                     <div className="flex flex-row gap-4">
-                      <Image src={award.icon} alt={award.name} className="object-cover w-12 h-12 rounded-xl bg-black/10 dark:bg-white/20 shadow dark:shadow-white/40" width={200} height={200} />
+                      <Image src={award.icon} alt={award.name} className="object-cover w-12 h-12 rounded-xl loader bg-gradient-to-br from-black/10 via-white to-black/10 dark:from-white/30 dark:via-black dark:to-white/30 shadow dark:shadow-white/35" width={200} height={200} />
                       <div className="flex flex-col gap-0 max-md:gap-1">
                         <div className="flex flex-row gap-1">
                           <a href={award.url} target="_blank" rel="noreferrer">
@@ -114,8 +114,8 @@ const Home = async () => {
                 {
                   teams.map((team, i) => (
                     <div className="flex flex-row gap-4 items-center" key={i}>
-                      <div className="shadow dark:shadow-white/40 bg-white w-10 h-10 rounded-xl overflow-hidden">
-                        <Image src={team.icon} alt={team.name} className="object-cover w-10 h-10 bg-black/10 dark:bg-white/20" width={200} height={200} />
+                      <div className="shadow dark:shadow-white/35 bg-white w-10 h-10 rounded-xl overflow-hidden">
+                        <Image src={team.icon} alt={team.name} className="object-cover w-10 h-10 loader bg-gradient-to-br from-black/10 via-white to-black/10 dark:from-white/30 dark:via-black dark:to-white/30" width={200} height={200} />
                       </div>
                       <a href={team.url} target="_blank" rel="noreferrer">
                         <p className="dark:text-white text-black text-lg hover:underline">{team.name}</p>
