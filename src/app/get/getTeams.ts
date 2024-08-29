@@ -2,8 +2,8 @@ import { notion } from ".";
 
 export const getTeams = async () => {
   try{
-    const response = await notion.databases.query({
-      database_id: "123fe0e695964564a08a66f429259bc1",
+    const response = await notion.client.databases.query({
+      database_id: notion.database.teams,
     });
     const teams = response.results.map((page) => {
       return {

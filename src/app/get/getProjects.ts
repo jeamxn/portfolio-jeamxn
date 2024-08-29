@@ -2,8 +2,8 @@ import { notion } from ".";
 
 export const getProjects = async () => {
   try{
-    const response = await notion.databases.query({
-      database_id: "c33fcbd0f9a74b6e8a460913ecc241ca",
+    const response = await notion.client.databases.query({
+      database_id: notion.database.projects,
     });
     const projects = response.results.map((page) => {
       return {

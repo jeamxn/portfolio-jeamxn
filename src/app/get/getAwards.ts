@@ -2,8 +2,8 @@ import { notion } from ".";
 
 export const getAwards = async () => {
   try{
-    const response = await notion.databases.query({
-      database_id: "65d09de8cdfc4ab7895f7e214bbece88",
+    const response = await notion.client.databases.query({
+      database_id: notion.database.awards,
     });
     const awards = response.results.map((page) => {
       return {
