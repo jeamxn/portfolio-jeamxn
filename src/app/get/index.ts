@@ -1,8 +1,7 @@
 import { Client } from "@notionhq/client";
 
 import { getAwards } from "./getAwards";
-import { getOgImage } from "./getOgImage";
-import { getProfile } from "./getProfile";
+import { getCoverImage } from "./getCoverImage";
 import { getProjects } from "./getProjects";
 import { getTeams } from "./getTeams";
 
@@ -19,10 +18,13 @@ export const notion = {
   }
 };
 
+const getProfile = async () => await getCoverImage(notion.page.profile);
+const getOgImage = async () => await getCoverImage(notion.page.ogImage);
+
 export {
   getAwards,
-  getProfile,
   getProjects,
   getTeams,
+  getProfile,
   getOgImage,
 };
