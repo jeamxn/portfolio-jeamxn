@@ -1,8 +1,7 @@
-import { Client } from "@notionhq/client";
+import { notion } from ".";
 
 export const getTeams = async () => {
   try{
-    const notion = new Client({ auth: process.env.NOTION_API_KEY });
     const response = await notion.databases.query({
       database_id: "123fe0e695964564a08a66f429259bc1",
     });
