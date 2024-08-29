@@ -1,7 +1,12 @@
 import React from "react";
 
-const ReactRN = () => (
-  <svg width="305" height="45" viewBox="0 0 305 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+import { SvgProps } from ".";
+
+const ReactRN = ({
+  width = 305,
+  height = 45,
+}: SvgProps) => (
+  <svg width={width} height={height} viewBox="0 0 305 45" fill="none" xmlns="http://www.w3.org/2000/svg">
     <g clipPath="url(#clip0_1187_60)">
       <path d="M24.9995 27.008C27.4608 27.008 29.456 24.9897 29.456 22.5C29.456 20.0103 27.4608 17.992 24.9995 17.992C22.5382 17.992 20.543 20.0103 20.543 22.5C20.543 24.9897 22.5382 27.008 24.9995 27.008Z" className="fill-black dark:fill-white"/>
       <path d="M24.999 31.736C38.2058 31.736 48.912 27.6009 48.912 22.5C48.912 17.3991 38.2058 13.264 24.999 13.264C11.7922 13.264 1.08594 17.3991 1.08594 22.5C1.08594 27.6009 11.7922 31.736 24.999 31.736Z" className="stroke-black dark:stroke-white" strokeWidth="2.5"/>

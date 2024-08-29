@@ -1,14 +1,8 @@
 import Image from "next/image";
 import React from "react";
 
-import { getAwards } from "./getAwards";
-import { getProfile } from "./getProfile";
-import { getProjects } from "./getProjects";
-import { getTeams } from "./getTeams";
-import Express from "./svgs/express";
-import Fastify from "./svgs/fastify";
-import NextJS from "./svgs/nextjs";
-import ReactRN from "./svgs/reactrn";
+import { getAwards, getProfile, getProjects, getTeams } from "./get";
+import Svg from "./svg";
 
 const Home = async () => {
   const [projects, awards, teams, profile] = await Promise.all([
@@ -17,7 +11,6 @@ const Home = async () => {
     getTeams(),
     getProfile(),
   ]);
-  // console.log(profile);
   return (
     <main className="w-full h-full max-lg:block flex flex-row items-start justify-start gap-12 max-lg:p-10 max-lg:px-4">
       <div className="h-full flex flex-col max-lg:h-auto max-lg:p-0 items-start justify-between gap-12 py-10 pl-10">
@@ -129,13 +122,13 @@ const Home = async () => {
           <div className="flex flex-col gap-6">
             <p className="dark:text-white text-black font-medium text-2xl">Skills</p>
             <div className="flex flex-col gap-4">
-              <ReactRN />
+              <Svg type="ReactRN" />
               <div className="flex flex-row items-center justify-start gap-4">
-                <Fastify />
+                <Svg type="Fastify" />
                 <div className="h-8 dark:border-white/30 border-black/15 border" />
-                <Express />
+                <Svg type="Express" />
               </div>
-              <NextJS />
+              <Svg type="NextJS" />
             </div>
           </div>
         </div>

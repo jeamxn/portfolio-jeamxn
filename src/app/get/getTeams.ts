@@ -4,7 +4,7 @@ export const getTeams = async () => {
   try{
     const notion = new Client({ auth: process.env.NOTION_API_KEY });
     const response = await notion.databases.query({
-      database_id: process.env.NOTION_DATABASE_TEAMS!,
+      database_id: "123fe0e695964564a08a66f429259bc1",
     });
     const teams = response.results.map((page) => {
       return {

@@ -4,7 +4,7 @@ export const getAwards = async () => {
   try{
     const notion = new Client({ auth: process.env.NOTION_API_KEY });
     const response = await notion.databases.query({
-      database_id: process.env.NOTION_DATABASE_AWARDS!,
+      database_id: "65d09de8cdfc4ab7895f7e214bbece88",
     });
     const awards = response.results.map((page) => {
       return {

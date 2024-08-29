@@ -1,7 +1,12 @@
 import React from "react";
 
-const NextJS = () => (
-  <svg width="148" height="30" viewBox="0 0 148 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+import { SvgProps } from ".";
+
+const NextJS = ({
+  width = 148,
+  height = 30,
+}: SvgProps) => (
+  <svg width={width} height={height} viewBox="0 0 148 30" fill="none" xmlns="http://www.w3.org/2000/svg">
     <g clipPath="url(#clip0_1187_76)">
       <path d="M98.3867 0.0124054H124.166V4.7625H113.939V29.7521H108.826V4.7625H98.3867V0.0124054Z" className="fill-black dark:fill-white"/>
       <path d="M55.9899 0.0124054V4.7625H35.3263V12.404H51.9439V17.154H35.3263V25.002H55.9899V29.7521H30.2131V4.7625H30.2109V0.0124054H55.9899Z" className="fill-black dark:fill-white"/>
