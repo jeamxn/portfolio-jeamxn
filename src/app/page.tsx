@@ -1,16 +1,34 @@
+"use client";
+
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 import Image from "next/image";
 import React from "react";
 
 import { getAwards, getProfile, getProjects, getTeams } from "./get";
+import { Awards } from "./get/getAwards";
+import { Projects } from "./get/getProjects";
+import { Teams } from "./get/getTeams";
 import Svg from "./svg";
 
-const Home = async () => {
-  const [projects, awards, teams, profile] = await Promise.all([
-    getProjects(), 
-    getAwards(),
-    getTeams(),
-    getProfile(),
-  ]);
+const Home = () => {
+  const { 
+    isFetching,
+    data: { projects, awards, teams, profile },
+  } = useQuery<{
+    projects: Projects,
+    awards: Awards,
+    teams: Teams,
+    profile: string,
+  }>({
+    queryKey: ["get_data"],
+    queryFn: async () => {
+      const res = await axios.post("/get");
+      return res.data || { projects: [], awards: [], teams: [], profile: "" };
+    },
+    initialData: { projects: [], awards: [], teams: [], profile: "" },
+  });
+
   return (
     <main className="w-full h-full max-lg:block flex flex-row items-start justify-start gap-12 max-lg:p-10 max-lg:px-4">
       <div className="h-full flex flex-col max-lg:h-auto max-lg:p-0 items-start justify-between gap-12 py-10 pl-10">
@@ -47,7 +65,18 @@ const Home = async () => {
             <p className="dark:text-white text-black font-medium text-2xl">Projects</p>
             <div className="flex flex-row gap-4 flex-wrap">
               {
-                projects.map((project, i) => (
+                isFetching ? Array(6).fill(0).map((_, i) => (
+                  <div key={i} className="w-[calc(33.33%-2rem)] group max-2xl:w-[calc(50%-1rem)] max-lg:w-[calc(33.33%-2rem)] max-md:w-[calc(50%-1rem)] max-sm:w-full rounded-xl overflow-hidden shadow dark:shadow-white/35 flex flex-col">
+                    <div className="object-cover aspect-video loader bg-gradient-to-br from-black/10 via-white to-black/10 dark:from-white/30 dark:via-black dark:to-white/30 w-full" />
+                    <div className="flex flex-row items-center justify-start p-4 gap-3">
+                      <div className="object-cover w-12 h-12 rounded-xl loader bg-gradient-to-br from-black/10 via-white to-black/10 dark:from-white/30 dark:via-black dark:to-white/30 shadow dark:shadow-white/35" />
+                      <div className="flex flex-col gap-1">
+                        <div className="w-44 h-7 loader bg-gradient-to-br from-black/10 via-white to-black/10 dark:from-white/30 dark:via-black dark:to-white/30 rounded-lg" />
+                        <div className="h-5 w-36 rounded-lg loader bg-gradient-to-br from-black/10 via-white to-black/10 dark:from-white/30 dark:via-black dark:to-white/30" />
+                      </div>
+                    </div>
+                  </div>
+                )) : projects.map((project, i) => (
                   <div key={i} className="w-[calc(33.33%-2rem)] group max-2xl:w-[calc(50%-1rem)] max-lg:w-[calc(33.33%-2rem)] max-md:w-[calc(50%-1rem)] max-sm:w-full rounded-xl overflow-hidden shadow dark:shadow-white/35 flex flex-col">
                     <a href={project.url} target="_blank" rel="noreferrer">
                       <Image src={project.cover} alt={project.data.title} className="object-cover aspect-video loader bg-gradient-to-br from-black/10 via-white to-black/10 dark:from-white/30 dark:via-black dark:to-white/30" width={160 * 5} height={90 * 5} />
@@ -71,7 +100,32 @@ const Home = async () => {
             <div className="flex flex-col gap-6 w-3/5 max-xl:w-full">
               <p className="dark:text-white text-black font-medium text-2xl">Awards</p>
               {
-                awards.map((award, i) => (
+                isFetching ? Array(4).fill(0).map((_, i) => (
+                  <div key={i} className="flex flex-row gap-8 max-md:flex-col max-md:gap-4">
+                    <div className="w-12">
+                      <div className="h-6 w-14 loader bg-gradient-to-br from-black/10 via-white to-black/10 dark:from-white/30 dark:via-black dark:to-white/30 rounded-lg" />             
+                    </div>
+                    <div className="flex flex-row gap-4 w-full">
+                      <div className="object-cover w-12 h-12 rounded-xl loader bg-gradient-to-br from-black/10 via-white to-black/10 dark:from-white/30 dark:via-black dark:to-white/30 shadow dark:shadow-white/35" />
+                      <div className="flex flex-col gap-1 max-md:gap-1">
+                        <div className="flex flex-row gap-1 w-full">
+                          <p className="h-7 w-full loader bg-gradient-to-br from-black/10 via-white to-black/10 dark:from-white/30 dark:via-black dark:to-white/30 rounded-lg" />
+                        </div>
+                        <div className="flex flex-row max-md:flex-col max-md:gap-0 gap-1 opacity-70">
+                          <div className="flex flex-row gap-1">
+                            <p className="dark:text-white text-black font-thin">주최</p>
+                            <div className="h-5 max-md:h-6 w-36 loader bg-gradient-to-br from-black/10 via-white to-black/10 dark:from-white/30 dark:via-black dark:to-white/30 rounded-lg" />
+                          </div>
+                          <p className="dark:text-white text-black max-md:hidden">·</p>
+                          <div className="flex flex-row gap-1">
+                            <p className="dark:text-white text-black font-thin">주관</p>
+                            <div className="h-5 max-md:h-6 w-36 loader bg-gradient-to-br from-black/10 via-white to-black/10 dark:from-white/30 dark:via-black dark:to-white/30 rounded-lg" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )) : awards.map((award, i) => (
                   <div key={i} className="flex flex-row gap-8 max-md:flex-col max-md:gap-4">
                     <div className="w-12">
                       <p className="dark:text-white text-black font-thin">{award.when.split("-").slice(0, 2).join(".")}</p>
@@ -105,7 +159,14 @@ const Home = async () => {
               <p className="dark:text-white text-black font-medium text-2xl">Teams</p>
               <div className="flex flex-col gap-4 flex-warp">
                 {
-                  teams.map((team, i) => (
+                  isFetching ? Array(3).fill(0).map((_, i) => (
+                    <div className="flex flex-row gap-4 items-center" key={i}>
+                      <div className="shadow dark:shadow-white/35 bg-white w-10 h-10 rounded-xl overflow-hidden">
+                        <div className="object-cover w-10 h-10 loader bg-gradient-to-br from-black/10 via-white to-black/10 dark:from-white/30 dark:via-black dark:to-white/30" />
+                      </div>
+                      <div className="w-32 h-7 loader bg-gradient-to-br from-black/10 via-white to-black/10 dark:from-white/30 dark:via-black dark:to-white/30 rounded-lg" />
+                    </div>
+                  )) : teams.map((team, i) => (
                     <div className="flex flex-row gap-4 items-center" key={i}>
                       <div className="shadow dark:shadow-white/35 bg-white w-10 h-10 rounded-xl overflow-hidden">
                         <Image src={team.icon} alt={team.name} className="object-cover w-10 h-10 loader bg-gradient-to-br from-black/10 via-white to-black/10 dark:from-white/30 dark:via-black dark:to-white/30" width={200} height={200} />

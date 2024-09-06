@@ -1,4 +1,4 @@
-import { notion } from ".";
+import { notion, Unpromise } from ".";
 
 export const getCoverImage = async (page_id: string) => {
   try{
@@ -12,3 +12,5 @@ export const getCoverImage = async (page_id: string) => {
     return "";
   }
 };
+
+export type CoverImage = Unpromise<ReturnType<typeof getCoverImage>>

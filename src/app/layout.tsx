@@ -3,6 +3,7 @@ import "./globals.css";
 import React from "react";
 
 import { getOgImage } from "./get";
+import Providers from "./providers";
 
 export const generateMetadata = async (): Promise<Metadata> => {
   const ogImage = await getOgImage();
@@ -35,7 +36,9 @@ export default function RootLayout({
   return (
     <html lang="ko" className="w-full h-full overflow-x-hidden">
       <body className="dark:bg-black bg-white w-full h-full overflow-x-hidden">
-        {children}
+        <Providers>
+          {children}
+        </Providers>
       </body>
     </html>
   );

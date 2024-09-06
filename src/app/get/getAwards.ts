@@ -1,4 +1,4 @@
-import { notion } from ".";
+import { notion, Unpromise } from ".";
 
 export const getAwards = async () => {
   try{
@@ -23,3 +23,5 @@ export const getAwards = async () => {
     return [];
   }
 };
+
+export type Awards = Unpromise<ReturnType<typeof getAwards>>;

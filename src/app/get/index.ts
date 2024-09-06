@@ -21,6 +21,9 @@ export const notion = {
 const getProfile = async () => await getCoverImage(notion.page.profile);
 const getOgImage = async () => await getCoverImage(notion.page.ogImage);
 
+//unpomise type
+export type Unpromise<T extends Promise<any>> = T extends Promise<infer U> ? U : never;
+
 export {
   getAwards,
   getProjects,
