@@ -1,9 +1,10 @@
 FROM oven/bun:latest
 WORKDIR /app
 
-COPY . .
+COPY package*.json .
 RUN bun install
 
+COPY . .
 ENV NODE_ENV=production
 
 EXPOSE 3000/tcp
@@ -11,4 +12,4 @@ EXPOSE 3000/tcp
 RUN bun run build
 ENTRYPOINT [ "bun", "run", "start" ]
 
-LABEL org.opencontainers.image.source=https://github.com/jeamxn/portfolio-jeamxn
+LABEL org.opencontainers.image.source=https://github.com/jeamxn/jeamxn
