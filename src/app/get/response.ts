@@ -37,7 +37,9 @@ const response = async (req: NextRequest) => {
   }
   catch(e: any){
     console.error(e.message);
-    return NextResponse.json([e.message]);
+    return NextResponse.json([e.message], {
+      status: 500,
+    });
   }
 };
 
