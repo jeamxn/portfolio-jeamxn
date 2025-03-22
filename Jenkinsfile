@@ -2,6 +2,7 @@ pipeline {
     agent any
     
     environment {
+        DOCKER_BUILDKIT = "1"
         REGISTRY_URL = 'ghcr.io'
         IMAGE_NAME = sh(script: 'echo $GIT_URL | sed -E "s/.*[:\\/]([^\\/]+\\/[^\\/]+)\\.git$/\\1/"', returnStdout: true).trim()
         IMAGE_TAG = sh(script: "git rev-parse --short HEAD", returnStdout: true).trim()
@@ -22,8 +23,9 @@ pipeline {
         stage('Build Image') {
             steps {
                 script {
-                    docker.build(env.IMAGE_URL)
+                    docker.build(env.IMAGE_URL, "--secret id=env,src=${env.MOUNT_URL}/.env")
                 }
+
             }
         }
         
