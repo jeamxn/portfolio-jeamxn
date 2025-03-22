@@ -23,7 +23,7 @@ pipeline {
         stage('Build Image') {
             steps {
                 script {
-                    docker.build(env.IMAGE_URL, "--secret id=env,src=${env.MOUNT_URL}/.env")
+                    docker.build(env.IMAGE_URL, "--secret id=env,src=${env.MOUNT_URL}/.env .")
                 }
 
             }
