@@ -20,17 +20,16 @@ pipeline {
             }
         }
 
-        stage('Check env file') {
+        stage('Sync env to Docker host') {
             steps {
                 script {
-                    // sh "ls -l ${env.MOUNT_URL}/.env || echo 'File not found in MOUNT_URL!'"
-                    // sh "cat ${env.MOUNT_URL}/.env"
-                    sh "ls -l ${env.WORKSPACE}/.env || echo 'File not found in WORKSPACE!'"
-                    sh "cat ${env.WORKSPACE}/.env"
+                    sh """
+                        scp ${env.MOUNT_URL}/.env user@remote-docker-host:${env.MOUNT_URL}/.env
+                    """
                 }
             }
         }
-        
+
         stage('Build Image') {
             steps {
                 script {
