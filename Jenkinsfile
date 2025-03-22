@@ -20,19 +20,10 @@ pipeline {
             }
         }
 
-        stage('Sync env to Docker host') {
-            steps {
-                script {
-                    sh """
-                        scp ${env.MOUNT_URL}/.env user@remote-docker-host:${env.MOUNT_URL}/.env
-                    """
-                }
-            }
-        }
-
         stage('Build Image') {
             steps {
                 script {
+                    sh "ls -la ${env.MOUNT_URL}"
                     docker.build(env.IMAGE_URL, "--secret id=env,src=${env.MOUNT_URL}/.env .")
                 }
 
