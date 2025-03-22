@@ -5,6 +5,6 @@ export const GET = async (req: NextRequest) => {
   const id = params.get("id");
 
   return NextResponse.json({ 
-    id: process.env[id || "DEFAULT_ID"],
+    // id: process.env[id || "DEFAULT_ID"],
   });
 };
