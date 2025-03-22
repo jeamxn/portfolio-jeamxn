@@ -18,6 +18,15 @@ pipeline {
 			}
 		}
 
+        stage('Debug') {
+            steps {
+                script {
+                    sh "ls -l /mnt/data/services/jeamxn/portfolio-jeamxn/"
+                    sh "cat /mnt/data/services/jeamxn/portfolio-jeamxn/.env || echo '.env 파일 없음'"
+                }
+            }
+        }
+
 		stage('Build Image') {
 			steps {
 				script {
