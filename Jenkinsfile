@@ -23,8 +23,8 @@ pipeline {
         stage('Check env file') {
             steps {
                 script {
-                    sh "ls -l ${env.MOUNT_URL}/.env || echo 'File not found in MOUNT_URL!'"
-                    sh "cat ${env.MOUNT_URL}/.env"
+                    // sh "ls -l ${env.MOUNT_URL}/.env || echo 'File not found in MOUNT_URL!'"
+                    // sh "cat ${env.MOUNT_URL}/.env"
                     sh "ls -l ${env.WORKSPACE}/.env || echo 'File not found in WORKSPACE!'"
                     sh "cat ${env.WORKSPACE}/.env"
                 }
