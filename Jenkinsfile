@@ -20,6 +20,18 @@ pipeline {
             }
         }
 
+        stage('Debug Env') {
+            steps {
+                script {
+                    sh 'whoami'
+                    sh 'pwd'
+                    sh 'env'
+                    sh 'ls -la /mnt/data/services/jeamxn'
+                    sh 'ls -la /mnt/data/services/jeamxn/portfolio-jeamxn'
+                }
+            }
+        }
+
         stage('Build Image') {
             steps {
                 script {
