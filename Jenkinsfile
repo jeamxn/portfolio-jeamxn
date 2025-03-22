@@ -23,11 +23,12 @@ pipeline {
         stage('Debug Env') {
             steps {
                 script {
-                    sh 'whoami'
-                    sh 'pwd'
-                    sh 'env'
+                    echo "IMAGE_NAME => ${env.IMAGE_NAME}"
+                    echo "MOUNT_URL => ${env.MOUNT_URL}"
+                    echo "CONTAINER_NAME => ${env.CONTAINER_NAME}"
+
                     sh 'ls -la /mnt/data/services'
-                    sh 'ls -la /mnt/data/services/jeamxn/portfolio-jeamxn'
+                    sh "ls -la ${env.MOUNT_URL}" // 여기도 변수 그대로
                 }
             }
         }
