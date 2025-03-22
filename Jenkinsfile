@@ -21,6 +21,8 @@ pipeline {
         stage('Debug') {
             steps {
                 script {
+                    sh "hostname"
+                    sh "whoami"
                     sh "ls -l /mnt/data/services/jeamxn/portfolio-jeamxn/"
                     sh "cat /mnt/data/services/jeamxn/portfolio-jeamxn/.env || echo '.env 파일 없음'"
                 }
