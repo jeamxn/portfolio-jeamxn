@@ -26,9 +26,7 @@ pipeline {
                     echo "IMAGE_NAME => ${env.IMAGE_NAME}"
                     echo "MOUNT_URL => ${env.MOUNT_URL}"
                     echo "CONTAINER_NAME => ${env.CONTAINER_NAME}"
-
-                    sh 'ls -la /mnt/data/services'
-                    sh "ls -la ${env.MOUNT_URL}" // 여기도 변수 그대로
+                    sh "cat ${env.MOUNT_URL}/.env"
                 }
             }
         }
