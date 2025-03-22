@@ -52,7 +52,7 @@ pipeline {
                         --name ${env.CONTAINER_NAME} \
                         --restart always \
                         --network proxy \
-                        --volume /mnt/data/services/portfolio-jeamxn/.env:/app/.env \
+                        --volume /mnt/data/services/${env.IMAGE_NAME}/.env:/app/.env \
                         ${env.IMAGE_URL}"
                     sh "docker start ${env.CONTAINER_NAME}"
                 }
