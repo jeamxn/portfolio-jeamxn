@@ -24,6 +24,8 @@ pipeline {
             steps {
                 script {
                     echo "IMAGE_NAME => ${env.IMAGE_NAME}"
+                    echo "IMAGE_TAG => ${env.IMAGE_TAG}"
+                    echo "IMAGE_URL => ${env.IMAGE_URL}"
                     echo "MOUNT_URL => ${env.MOUNT_URL}"
                     echo "CONTAINER_NAME => ${env.CONTAINER_NAME}"
                     sh "cat ${env.MOUNT_URL}/.env"
@@ -34,7 +36,6 @@ pipeline {
         stage('Build Image') {
             steps {
                 script {
-                    sh "ls -la ${env.MOUNT_URL}"
                     docker.build(env.IMAGE_URL, "--secret id=env,src=${env.MOUNT_URL}/.env .")
                 }
 
