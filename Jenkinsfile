@@ -26,7 +26,7 @@ pipeline {
                     sh 'whoami'
                     sh 'pwd'
                     sh 'env'
-                    sh 'ls -la /var/jenkins_envs'
+                    sh 'ls -la /mnt/data/services'
                     sh 'ls -la /mnt/data/services/jeamxn/portfolio-jeamxn'
                 }
             }
