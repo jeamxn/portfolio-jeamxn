@@ -32,7 +32,6 @@ const Home = () => {
   return (
     <main className="w-full h-full max-lg:block flex flex-row items-start justify-start gap-12 max-lg:p-10 max-lg:px-4">
       <div className="h-full flex flex-col max-lg:h-auto max-lg:p-0 items-start justify-between gap-12 py-10 pl-10">
-        <Image src="/favicon.ico" alt="logo" width={64} height={64} />
         <img src={profile} alt="me" className="w-60 h-80 object-cover rounded-full max-lg:w-36 max-lg:h-36 loader bg-gradient-to-br from-black/10 via-white to-black/10 dark:from-white/30 dark:via-black dark:to-white/30" width={270} height={360} />
         <div className="flex flex-col gap-20 max-lg:gap-5">
           <div className="flex flex-col items-start justify-start gap-2">
