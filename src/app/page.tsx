@@ -6,7 +6,6 @@ import axios from "axios";
 import Image from "next/image";
 import React from "react";
 
-import { getAwards, getProfile, getProjects, getTeams } from "./get";
 import { Awards } from "./get/getAwards";
 import { Projects } from "./get/getProjects";
 import { Teams } from "./get/getTeams";
